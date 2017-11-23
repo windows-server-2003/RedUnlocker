@@ -11,5 +11,4 @@ For now, Godmode9 version 1.4.0 to 1.4.3
 
 ## Credits
 - [__d0k3__](https://github.com/d0k3) for [GodMode9](https://github.com/d0k3/GodMode9) 
-
 - Everyone who contributed to GodMode9
