@@ -9,11 +9,45 @@
 # RUN THIS AT YOUR OWN RISK
 # I am not responsible for anything
 
-ask -s "Do you know what you are doing?\nIf not, press B button.\n\nCONTINUE AT YOUR OWN RISK"
+set SUCCESSMSG "Red permission unlocked\n \nTo say :\nBe careful when you unlock Blue permission"
+ask -s "RedUnlocker 1.4.3\n \nDo you know what you are doing?\nIf not, press B button.\nCONTINUE AT YOUR OWN RISK"
 
-set ERRORMSG "This needs blue permission."
-set SUCCESSMSG "Red permission unlocked\n\nTo say : Be careful when you unlock Blue permission"
-allow M:
+set ERRORMSG "This script needs the blue permission."
+allow -a M:
 
-set ERRORMSG "Failed to read 'res.bin'"
-inject $[CURRDIR]/res.bin@0:4 M:/arm9.mem@6A8C0
+#### make res_RU.bin filled with 0xFF for 4Byte
+    set ERRORMSG "failed to make 'res.bin'"
+    set RESPATH 0:/gm9/res_RU.bin
+    
+    # remove old files
+    rm -o -s $[RESPATH]
+    rm -o -s $[RESPATH].tmp
+    rm -o -s $[RESPATH].tmp.sha
+    
+    # Always 0x00
+    inject M:/boot9.bin@FFFF:1 $[RESPATH].tmp@0
+    
+    # Is really 0x00 ?
+    sha $[RESPATH].tmp 6E340B9CFFB37A989CA544E6BB780A2C78901D3FB33738768511A30617AFA01D
+
+    # get sha256(The 5th Byte of the sha256 of 0x00 is 0xFF)
+    shaget $[RESPATH].tmp $[RESPATH].tmp.sha
+    
+    # reserve 4Bytes (1th Byte is already set 0xFF by this step)
+    inject $[RESPATH].tmp.sha@4:4 $[RESPATH]@0
+    
+    # injecting to other 3Bytes
+    inject $[RESPATH].tmp.sha@4:1 $[RESPATH]@1
+    inject $[RESPATH].tmp.sha@4:1 $[RESPATH]@2
+    inject $[RESPATH].tmp.sha@4:1 $[RESPATH]@3
+    
+    # remove temporary files
+    rm $[RESPATH].tmp
+    rm $[RESPATH].tmp.sha
+
+#### Actual unlocking
+    set ERRORMSG "Failed to read 'res_RU.bin'"
+    inject $[RESPATH]@0:4 M:/arm9.mem@6A8C0
+
+    # remove res_RU.bin
+    rm $[RESPATH]
