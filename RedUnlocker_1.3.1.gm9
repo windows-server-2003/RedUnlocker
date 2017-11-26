@@ -1,0 +1,19 @@
+# Red Unlocker for 1.3.1
+# author : windows-server-2003
+# permission : Blue
+# This script will unlock the SysNAND level3 permission(Red)
+# with only memory permission(Blue)
+
+# DO NOT RUN THIS on versions other than 1.3.1
+# or it may write to unexpected location and I DON'T KNOW WHAT WILL HAPPEN
+# RUN THIS AT YOUR OWN RISK
+# I am not responsible for anything
+
+ask -s "Do you know what you are doing?\nIf not, press B button.\nCONTINUE AT YOUR OWN RISK"
+
+set ERRORMSG "This needs blue permission."
+set SUCCESSMSG "Red permission unlocked.\n \nTo say :\nBe careful when you unlock Blue permission"
+allow M:
+
+set ERRORMSG "Failed to read 'res.bin'"
+inject $[CURRDIR]/res.bin@0:4 M:/fcram.mem@3F53BE0
