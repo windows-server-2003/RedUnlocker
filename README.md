@@ -9,13 +9,13 @@ Use this at your own risk. I am not responsible for anything.
 ## How to use
 1) Put the scripts somewhere under /gm9/scripts in your SD card.
 2) If you are using version 1.3.1 or earlier, put the "res.bin" to the same location.
-3) Launch GodMode9,
-　If you are using 1.4.0 or later
-　　Press Home button
+3) Launch GodMode9
+- If you are using 1.4.0 or later
+        Press Home button
 　　Select "scripts"
 　　Go to folder which you put the scripts in. (if put to /gm9/scripts itself, nothing to do at this step)
 　　Select the same name of version of GodMode9 you are using.
-　If 1.3.1 or ealier(You can do this even you are using 1.4.0 or later)
+- If 1.3.1 or ealier(You can do this even you are using 1.4.0 or later)
 　　Select "[0:] SDCARD"
 　　Go to folder which you put the scripts in.
 　　Select the same name of version of GodMode9 you are using.
