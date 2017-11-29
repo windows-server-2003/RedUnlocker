@@ -4,7 +4,7 @@ These GM9 scripts will unlock the red permission of GodMode9 with only the blue 
 
 Each script is for each version of GodMode9. __DO NOT USE WRONG VERSION__ or you'll write to unexpected location in RAM and may(not impossible) **BRICK** your console
 
-Use this at your own risk. I am not responsible for anything.
+<font color="Red">Use this at your own risk.</font> I am not responsible for anything.
 
 ## How to use
 1) Put the scripts somewhere under /gm9/scripts in your SD card.
